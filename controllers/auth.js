@@ -1,5 +1,4 @@
 const {response} = require('express')
-const {validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs')
 const Usuario = require('../models/Usuario')
 const { generarJWT } = require('../helpers/jwt')
@@ -7,7 +6,7 @@ const { generarJWT } = require('../helpers/jwt')
 
 const createUser = async(req, res = response) =>{
 
-    const {name,email,password} = req.body
+    const {email,password} = req.body
 
   try {
     
@@ -105,7 +104,7 @@ const revalidarToken = async ( req, res = response )=>{
 
     const token = await generarJWT(uid, name)
 
-  res.json({
+    res.json({
         ok:true,
         uid,
         name,
