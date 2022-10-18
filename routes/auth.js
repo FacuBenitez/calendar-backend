@@ -17,8 +17,7 @@ router.post('/', [
     check('password', 'El password debe de ser de 6 caracteres').isLength({ min:6 })
 ], loginUser )
 
-router.post('/renew', validarJWT,
- revalidarToken)
+router.get('/renew', validarJWT, revalidarToken)
  
 
 
